@@ -15,7 +15,6 @@ Description: Children who come from challenged backgrounds lack the support need
 
 
 
-Client Email: wevans1@augusta.edu
 =======
 * Assata Quinichett: assataquinichett@gmail.com
 * Emma Dang: danghoangha1996@gmail.com	
