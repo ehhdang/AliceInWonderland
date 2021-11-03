@@ -1,3 +1,21 @@
+'''
+The following function parses a file of the words we already have recordings for. It spits out a file of the same information with improved
+formatting. It also returns a list of the woords.
+'''
+def getAudioFileWords(filename):
+    f = open(filename, 'r')
+    f.readline()
+    f.readline()
+    text = f.readlines()
+    f.close()
+
+    with open("words_that_have_audio.txt", "w") as f:
+        for word in text:
+            f.write(word)
+            #f.write("\n")
+            
+    return text
+
 special_characters = set(["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "_", "=", \
     "{", "}", "[", "]", "~", "`", ":", ";", ",", "<", ">", ".", "?", "/", "—", "’", "‘", "‘", "“", "”", "“"])
 
