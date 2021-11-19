@@ -14,34 +14,41 @@ create table student(
     PRIMARY KEY (uname)
 );
 
+create table story(
+	title varchar(300) NOT NULL,
+    content LONGTEXT NOT NULL,
+    PRIMARY KEY (title)
+);
+
+create table word(
+	actualWord varchar(500) NOT NULL,
+    audio varchar(500) NOT NULL,
+    title varchar(300) NOT NULL,
+    FOREIGN KEY (title) REFERENCES story(title), 
+    PRIMARY KEY (actualWord)
+);
+
 create table quiz(
 	keyword varchar(100) NOT NULL,
+    FOREIGN KEY (keyword) REFERENCES word(actualWord),
     PRIMARY KEY (keyword)
 );
 
 create table question(
+	keyword varchar(100) NOT NULL,
 	statement varchar(500) NOT NULL,
-    PRIMARY KEY (statement)
+    questionNumber int NOT NULL,
+    FOREIGN KEY (keyword) REFERENCES quiz(keyword),
+    PRIMARY KEY (questionNumber)
 );
 
 create table answer(
 	answerText varchar(100) NOT NULL,
 	answerStatus varchar(40) NOT NULL,
-    PRIMARY KEY (answerText)
+    questionNumber int NOT NULL,
+    FOREIGN KEY (questionNumber) REFERENCES question(questionNumber), 
+    PRIMARY KEY (questionNumber, answerText)
 );
 
-
-create table word(
-	actualWord varchar(500) NOT NULL,
-    audio varchar(500) NOT NULL,
-    PRIMARY KEY (actualWord)
-);
-
-create table story(
-	title varchar(300) NOT NULL,
-    
-    text LONGTEXT NOT NULL,
-    PRIMARY KEY (title)
-);
 
 
