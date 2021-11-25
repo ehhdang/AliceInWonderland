@@ -14,11 +14,23 @@ create table student(
     PRIMARY KEY (uname)
 );
 
+insert into student(uname, passw, fname, lname, class, wordsAccessed, definitionsAccess, avgQuizScore)
+values
+    ('aquin', 'pass1', 'Assata', 'Quinchett', 3, 10, 5, .88),
+    ('edang', 'pass2', 'Emma', 'Dang', 3, 10, 5, .92),
+    ('kjohn', 'pass3', 'Kolbie', 'Johnson', 3, 10, 5, .87),
+    ('kmogi', 'pass4', 'Kirtana', 'Mogili', 3, 10, 5, .91),
+    ('mjain', 'pass5', 'Maansi', 'Jain', 3, 10, 5, .90),
+    ('snair', 'pass6', 'Sid', 'Nair', 3, 10, 5, .89);
+
 create table story(
 	title varchar(300) NOT NULL,
     content LONGTEXT NOT NULL,
     PRIMARY KEY (title)
 );
+
+insert into story(title, content)
+values('Alice in Wonderland', 'The story.');
 
 create table word(
 	actualWord varchar(500) NOT NULL,
@@ -28,19 +40,28 @@ create table word(
     PRIMARY KEY (actualWord)
 );
 
+insert into word(actualWord, audio, title)
+values('welcome', 'welcome.mp3', 'Welcome');
+
 create table quiz(
 	keyword varchar(100) NOT NULL,
     FOREIGN KEY (keyword) REFERENCES word(actualWord),
     PRIMARY KEY (keyword)
 );
 
+insert into quiz(keyword)
+values('welcome');
+
 create table question(
 	keyword varchar(100) NOT NULL,
-	statement varchar(500) NOT NULL,
+	sentence varchar(500) NOT NULL,
     questionNumber int NOT NULL,
     FOREIGN KEY (keyword) REFERENCES quiz(keyword),
     PRIMARY KEY (questionNumber)
 );
+
+insert into question(keyword, sentence, questionNumber)
+values('welcome', 'Welcome to the rabbit hole.', 1);
 
 create table answer(
 	answerText varchar(100) NOT NULL,
@@ -50,5 +71,7 @@ create table answer(
     PRIMARY KEY (questionNumber, answerText)
 );
 
+insert into answer(answerText, answerStatus, questionNumber)
+values('welcome', '', 1)
 
 
