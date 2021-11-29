@@ -36,12 +36,13 @@ create table word(
 	actualWord varchar(500) NOT NULL,
     audio varchar(500) NOT NULL,
     title varchar(300) NOT NULL,
-    /*FOREIGN KEY (title) REFERENCES story(title), */
+    FOREIGN KEY (title) REFERENCES story(title), 
     PRIMARY KEY (actualWord)
 );
 
 insert into word(actualWord, audio, title)
-values('welcome', 'welcome.mp3', last_insert_id());
+values('welcome', 'welcome.mp3', (select title from story));
+
 
 
 create table quiz(
