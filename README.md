@@ -17,4 +17,4 @@ Dr. Walter Evans
 * Sid Nair: sidharthnair0711@gmail.com (Team Leader, Frontend)
 
 ## Project Tracking
-https://trello.com/b/vDVwBiKg/semester-1
+https://trello.com/invite/b/vDVwBiKg/fb08be2b120867ebc28fb54ec2311768/semester-1
