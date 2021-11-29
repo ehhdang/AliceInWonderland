@@ -36,42 +36,41 @@ create table word(
 	actualWord varchar(500) NOT NULL,
     audio varchar(500) NOT NULL,
     title varchar(300) NOT NULL,
-    FOREIGN KEY (title) REFERENCES story(title), 
+    /*FOREIGN KEY (title) REFERENCES story(title), */
     PRIMARY KEY (actualWord)
 );
 
 insert into word(actualWord, audio, title)
-values('welcome', 'welcome.mp3', 'Welcome');
+values('welcome', 'welcome.mp3', last_insert_id());
+
 
 create table quiz(
 	keyword varchar(100) NOT NULL,
-    FOREIGN KEY (keyword) REFERENCES word(actualWord),
+   /** FOREIGN KEY (keyword) REFERENCES word(actualWord),*/
     PRIMARY KEY (keyword)
 );
 
 insert into quiz(keyword)
-values('welcome');
+values(last_insert_id());
 
 create table question(
 	keyword varchar(100) NOT NULL,
 	sentence varchar(500) NOT NULL,
     questionNumber int NOT NULL,
-    FOREIGN KEY (keyword) REFERENCES quiz(keyword),
+  /*  FOREIGN KEY (keyword) REFERENCES quiz(keyword),*/
     PRIMARY KEY (questionNumber)
 );
 
 insert into question(keyword, sentence, questionNumber)
-values('welcome', 'Welcome to the rabbit hole.', 1);
+values('welcome', 'Welcome to the rabbit hole.', LAST_INSERT_ID());
 
 create table answer(
 	answerText varchar(100) NOT NULL,
 	answerStatus varchar(40) NOT NULL,
     questionNumber int NOT NULL,
-    FOREIGN KEY (questionNumber) REFERENCES question(questionNumber), 
+   /* FOREIGN KEY (questionNumber) REFERENCES question(questionNumber), */
     PRIMARY KEY (questionNumber, answerText)
 );
 
 insert into answer(answerText, answerStatus, questionNumber)
 values('welcome', '', 1)
-
-
