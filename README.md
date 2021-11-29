@@ -15,3 +15,6 @@ Dr. Walter Evans
 * Kolbie Johnson: kolbiesj@gmail.com (Backend, Communications)
 * Maansi Jain: nymaansi9@gmail.com (Backend)
 * Sid Nair: sidharthnair0711@gmail.com (Team Leader, Frontend)
+
+## Project Tracking
+https://trello.com/b/vDVwBiKg/semester-1
