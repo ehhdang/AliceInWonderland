@@ -73,4 +73,4 @@ create table answer(
 );
 
 insert into answer(answerText, answerStatus, questionNumber)
-values('welcome', '', 1)
+values('welcome', '', 1);
