@@ -30,7 +30,7 @@ create table story(
 );
 
 insert into story(title, content)
-values('Alice in Wonderland', 'The story.');
+values('Alice in Wonderland', 'Once upon a time...etc');
 
 create table word(
 	actualWord varchar(500) NOT NULL,
@@ -46,31 +46,33 @@ values('welcome', 'welcome.mp3', last_insert_id());
 
 create table quiz(
 	keyword varchar(100) NOT NULL,
-   /** FOREIGN KEY (keyword) REFERENCES word(actualWord),*/
+    FOREIGN KEY (keyword) REFERENCES word(actualWord),
     PRIMARY KEY (keyword)
 );
 
 insert into quiz(keyword)
-values(last_insert_id());
+values((select actualWord from word));
 
 create table question(
 	keyword varchar(100) NOT NULL,
 	sentence varchar(500) NOT NULL,
     questionNumber int NOT NULL,
-  /*  FOREIGN KEY (keyword) REFERENCES quiz(keyword),*/
+	FOREIGN KEY (keyword) REFERENCES quiz(keyword),
     PRIMARY KEY (questionNumber)
 );
 
 insert into question(keyword, sentence, questionNumber)
-values('welcome', 'Welcome to the rabbit hole.', LAST_INSERT_ID());
+values('welcome', 'Welcome to the rabbit hole.', 1);
 
 create table answer(
 	answerText varchar(100) NOT NULL,
 	answerStatus varchar(40) NOT NULL,
     questionNumber int NOT NULL,
-   /* FOREIGN KEY (questionNumber) REFERENCES question(questionNumber), */
+    FOREIGN KEY (questionNumber) REFERENCES question(questionNumber), 
     PRIMARY KEY (questionNumber, answerText)
 );
 
 insert into answer(answerText, answerStatus, questionNumber)
-values('welcome', '', 1);
+values('welcome', 'incomplete', 1);
+
+
